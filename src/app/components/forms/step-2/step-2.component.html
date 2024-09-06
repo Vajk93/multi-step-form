@@ -1,0 +1,38 @@
+<div class="w-full">
+    <!-- <h1 class="step-title">Select your plan</h1>
+    <p class="step-desc">You have the option of monthly or yearly billing.</p> -->
+    <app-title-and-desc
+        [title]="'Select your plan'"
+        [desc]="'You have the option of monthly or yearly billing.'">
+    </app-title-and-desc>
+
+    <!-- items container: -->
+    <div class="grid grid-col-1 lg:grid-cols-3 gap-6 mt-12">
+        <!-- item top: -->
+        <div *ngFor="let item of datas" 
+            class="p-5 rounded-lg flex flex-row items-center lg:items-start lg:flex-col bg-white lg:h-[170px] justify-between border-[1px] border-[#D6D9E6]">
+            <div>
+                <img src="{{item.icon}}" alt="">
+            </div>
+            <div>
+                <p class="text-my-blue text-[16px] font-bold">{{item.name}}</p>
+                <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
+                <p *ngIf="!isMonthly" class="text-sm font-[300] text-black">{{item.desc}}</p>
+            </div>
+        </div>
+        <!-- item bottom -->
+    </div>
+
+    <!-- period switcher: -->
+    <!-- <button (click)="isMonthly = !isMonthly">toggle {{isMonthly}}</button> -->
+    <div class="bg-[#EFF5FF] h-[48px] w-full rounded-lg mt-7 flex justify-center pt-2 gap-7">
+        <p [ngClass]="isMonthly ? 'text-my-blue' : 'text-[#9699AA]'" class=" font-medium">Monthly</p>
+        <!-- switcher: -->
+        <div (click)="isMonthly = !isMonthly" class="relative h-[20px] w-[38px] rounded-[10px] bg-my-blue mt-1 transition-all cursor-pointer">
+            <div [ngClass]="isMonthly ? 'left-[4px]' : 'left-[22px]'" 
+                class="absolute top-1 h-[12px] w-[12px] bg-white rounded-full transition-all">
+            </div>
+        </div>
+        <p [ngClass]="!isMonthly ? 'text-my-blue' : 'text-[#9699AA]'" class=" font-medium">Yearly</p>
+    </div>
+</div>

@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+    background: #EFF5FF;
+}
+.my-form {
+    @apply flex flex-col
+}
+
+.my-form label {
+    @apply text-lg text-my-blue
+}
+
+.my-form input {
+    @apply bg-red-400 rounded-md h-[52px] border-[1px] border-[#D6D9E6]  bg-transparent px-5 text-[22px] font-medium
+}
+
+input:focus {
+    @apply outline-none border-[2px] border-purple-400
+}

@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StepperService {
-
-  	constructor() { }
 
 	public nextStep(){
 		let _step = this.stepSubject.getValue() + 1;

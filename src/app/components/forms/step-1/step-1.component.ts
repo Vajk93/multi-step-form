@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StepperService } from 'src/app/services/stepper.service';
 
 @Component({
   selector: 'app-step-1',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class Step1Component {
 
+	constructor(private stepperService: StepperService){}
+
+	protected next(){
+		this.stepperService.nextStep();
+	}
+
+	protected prev(){
+		this.stepperService.prevStep();
+	}
 }

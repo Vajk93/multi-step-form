@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { StepperService } from 'src/app/services/stepper.service';
 
 @Component({
   selector: 'app-steps',
@@ -7,16 +8,16 @@ import { Component, HostListener, OnInit } from '@angular/core';
 })
 export class StepsComponent implements OnInit {
 
-	constructor() {
+	constructor(private stepperService: StepperService) {
 		this.setBackgroundImage(window.innerWidth);
 	}
 
 	ngOnInit():void {
 		this.setBackgroundImage(window.innerWidth);
+		this.stepperService.actualStep$.subscribe(step => {
+			this.actualStep = step;
+		})
 	}
-
-	protected bgImage:string = '/assets/images/bg-sidebar-desktop.svg';
-	private lgBreakpoint: number = 1024;
 
 	@HostListener('window:resize', ['$event'])
 	onResize(event: Event) {
@@ -31,5 +32,16 @@ export class StepsComponent implements OnInit {
 			this.bgImage = '/assets/images/bg-sidebar-desktop.svg';
 		}
 	}
+
+	protected steps:any[] = [
+		{step: 1, title: 'YOUR INFO', isActive:false},
+		{step: 2, title: 'SELECT PLAN', isActive:false},
+		{step: 3, title: 'ADD-ONS', isActive:false},
+		{step: 4, title: 'SUMMARY', isActive:false},
+	]
+
+	protected actualStep:number = 1
+	protected bgImage:string = '/assets/images/bg-sidebar-desktop.svg';
+	private lgBreakpoint: number = 1024;
 
 }

@@ -6,8 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./step.component.css']
 })
 export class StepComponent {
-	@Input() step:number = 1;
-	@Input() title:string = '';
-	@Input() isActive:boolean = false;
+	// @Input() step:number = 1;
+	// @Input() title:string = '';
+	// @Input() actualStep:number = 1;
 
 }

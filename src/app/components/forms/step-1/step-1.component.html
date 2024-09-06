@@ -1,23 +1,36 @@
-<div class="w-full">
-    <!-- <h1 class="step-title">Persolnal info</h1>
-    <p class="step-desc">Please provide your name, email address, and phone number.</p> -->
-    <app-title-and-desc
-        [title]="'Persolnal info'"
-        [desc]="'Please provide your name, email address, and phone number.'">
-    </app-title-and-desc>
+<div class="w-full h-full flex flex-col">
+    <div class="flex-grow">
+        <app-title-and-desc
+            [title]="'Persolnal info'"
+            [desc]="'Please provide your name, email address, and phone number.'">
+        </app-title-and-desc>
 
-    <div class="my-form mt-10">
-        <label for="">Name</label>
-        <input type="text" placeholder="e.g. Stephen King">
+        <div class="my-form mt-10">
+            <label for="">Name</label>
+            <input type="text" placeholder="e.g. Stephen King">
+        </div>
+
+        <div class="my-form mt-8">
+            <label for="">Email Address</label>
+            <input type="email" placeholder="e.g. stephenking@lorem.com">
+        </div>
+
+        <div class="my-form mt-8">
+            <label for="">Phone number</label>
+            <input type="text" placeholder="e.g. +1 234 567 890">
+        </div>
     </div>
 
-    <div class="my-form mt-8">
-        <label for="">Email Address</label>
-        <input type="email" placeholder="e.g. stephenking@lorem.com">
+    <!-- stepper buttons: -->
+    <div class="hidden  lg:flex justify-between">
+        <button [disabled]="true" class="opacity-0 text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
+        <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
     </div>
+</div>
 
-    <div class="my-form mt-8">
-        <label for="">Phone number</label>
-        <input type="text" placeholder="e.g. +1 234 567 890">
-    </div>
+
+<!-- !stepper for mobile view: -->
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
+    <button [disabled]="true" class="opacity-0 text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
+    <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
 </div>

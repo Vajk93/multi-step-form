@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StepperService } from 'src/app/services/stepper.service';
 
 @Component({
   selector: 'app-step-3',
@@ -6,6 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./step-3.component.css']
 })
 export class Step3Component {
+
+	constructor(private stepperService: StepperService){}
+
+	protected next(){
+		this.stepperService.nextStep();
+	}
+
+	protected prev(){
+		this.stepperService.prevStep();
+	}
 	protected isMonthly:boolean = true;
 	protected datas = [
 		{

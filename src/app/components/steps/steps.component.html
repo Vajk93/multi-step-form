@@ -1,9 +1,16 @@
-<div class="lg:mt-0 px-10 pt-10 bg-cover object-fit w-full h-[200px] lg:h-[600px] flex flex-row justify-center lg:flex-col lg:justify-start gap-5 lg:gap-7 lg:rounded-xl" 
+<div class="lg:mt-0 px-10 pt-10 bg-cover object-fit w-full h-[200px] lg:h-[600px] flex flex-row justify-center items-start lg:flex-col lg:justify-start gap-5 lg:gap-7 lg:rounded-xl" 
     [ngStyle]="{'background-image': 'url(' + bgImage + ')'}">
 
-    <app-step [step]="1" [title]="'your info'" [isActive]="false"></app-step>
-    <app-step [step]="2" [title]="'select plan'" [isActive]="false"></app-step>
-    <app-step [step]="3" [title]="'add-ons'" [isActive]="false"></app-step>
-    <app-step [step]="4" [title]="'summary'" [isActive]="false"></app-step>
+    <div *ngFor="let step of steps; let i = index" class="flex gap-5 items-center uppercase">
+        <div class="h-[32px] w-[32px]">
+            <div [ngClass]="actualStep === step.step ? 'bg-[#BEE2FD] border-[#BEE2FD]' : 'border-white'" class="border-[2px] rounded-full h-[32px] w-[32px] flex justify-center items-center">
+                <p [ngClass]="actualStep === step.step ? 'text-black' : 'text-white'" class="text-lg lg:text-sm font-bold">{{step.step}}</p>
+            </div>
+        </div>
+        <div class="hidden lg:block">
+            <p class="text-white font-[300] text-xs">STEP&nbsp;{{step.step}}</p>
+            <h2 class="text-white font-bold text-sm">{{step.title}}</h2>
+        </div>
+    </div>
 
 </div>

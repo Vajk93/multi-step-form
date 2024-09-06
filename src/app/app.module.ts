@@ -11,7 +11,6 @@ import { Step2Component } from './components/forms/step-2/step-2.component';
 import { Step3Component } from './components/forms/step-3/step-3.component';
 import { Step4Component } from './components/forms/step-4/step-4.component';
 import { TitleAndDescComponent } from './components/title-and-desc/title-and-desc.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +23,6 @@ import { NavigationComponent } from './components/navigation/navigation.componen
     Step3Component,
     Step4Component,
     TitleAndDescComponent,
-    NavigationComponent
   ],
   imports: [
     BrowserModule,

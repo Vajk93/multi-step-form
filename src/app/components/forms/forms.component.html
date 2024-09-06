@@ -1,12 +1,8 @@
 <div class="pt-5 pb-5 lg:pt-14 lg:pb-5 px-5 lg:px-20 flex flex-col justify-between h-full">
-    <div>
-        <!-- <app-step-1></app-step-1> -->
-        <app-step-2></app-step-2>
-        <!-- <app-step-3></app-step-3> -->
-        <!-- <app-step-4></app-step-4> -->
+    <div class="h-full" [ngSwitch]="actualStep">
+        <app-step-1 *ngSwitchCase="1"></app-step-1>
+        <app-step-2 *ngSwitchCase="2"></app-step-2>
+        <app-step-3 *ngSwitchCase="3"></app-step-3>
+        <app-step-4 *ngSwitchCase="4"></app-step-4>
     </div>
- 
-
-   <!-- navigation: -->
-    <app-navigation></app-navigation>
 </div>

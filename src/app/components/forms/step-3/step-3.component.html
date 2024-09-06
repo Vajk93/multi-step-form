@@ -1,33 +1,46 @@
-<div class="w-full">
-    <!-- <h1 class="step-title">Pick add-ons</h1>
-    <p class="step-desc">Add-ons help enhance your gaming experience.</p> -->
-    <app-title-and-desc
-        [title]="'Pick add-ons'"
-        [desc]="'Add-ons help enhance your gaming experience.'">
-    </app-title-and-desc>
+<div class="w-full h-full flex flex-col">
+    <div class="flex-grow">
 
-    <!-- items container: -->
-    <div class="flex flex-col gap-5 mt-8">
-        <!-- item top: -->
-        <div *ngFor="let item of datas" 
-            [ngClass]="item.selected ? 'border-my-purple' : 'border-[#D6D9E6]'"
-            (click)="item.selected = !item.selected"
-            class="p-5 rounded-lg flex flex-row items-center bg-white justify-between border-[1px] cursor-pointer">
-            <div class="flex items-center">
-               <div 
-                    [ngClass]="item.selected ? 'bg-my-purple border-my-purple' : 'bg-white border-[#D6D9E6]'"
-                     class="h-5 w-5 rounded-sm mr-5 flex justify-center items-center border-[1px]">
+        <app-title-and-desc
+            [title]="'Pick add-ons'"
+            [desc]="'Add-ons help enhance your gaming experience.'">
+        </app-title-and-desc>
+
+        <!-- items container: -->
+        <div class="flex flex-col gap-5 mt-8">
+            <!-- item top: -->
+            <div *ngFor="let item of datas" 
+                [ngClass]="item.selected ? 'border-my-purple' : 'border-[#D6D9E6]'"
+                (click)="item.selected = !item.selected"
+                class="p-5 rounded-lg flex flex-row items-center bg-white justify-between border-[1px] cursor-pointer">
+                <div class="flex items-center">
+                <div [ngClass]="item.selected ? 'bg-my-purple border-my-purple' : 'bg-white border-[#D6D9E6]'"
+                    class="h-5 w-5 rounded-sm mr-5 flex justify-center items-center border-[1px]">
                     <img src="/assets/images/icon-checkmark.svg" alt="">
-               </div>
-               <div>
-                <p class="text-my-blue text-[16px] font-bold">{{item.name}}</p>
-                <p class="text-sm font-[300] text-black">{{item.desc}}</p>
-               </div>
+                </div>
+                <div>
+                    <p class="text-my-blue text-[16px] font-bold">{{item.name}}</p>
+                    <p class="text-sm font-[300] text-black">{{item.desc}}</p>
+                </div>
+                </div>
+                <div>
+                    <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
+                </div>
             </div>
-            <div>
-                <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
-            </div>
+            <!-- item bottom -->
         </div>
-        <!-- item bottom -->
     </div>
+
+    <!-- stepper buttons: -->
+    <div class="hidden lg:flex justify-between">
+        <button (click)="prev()" class="text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
+        <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
+    </div>
+</div>
+
+
+<!-- !stepper for mobile view: -->
+<div class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
+    <button (click)="prev()" class="text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
+    <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
 </div>

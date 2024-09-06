@@ -1,4 +1,4 @@
-<div class="w-full h-full flex flex-col">
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full h-full flex flex-col">
     <div class="flex-grow">
         <app-title-and-desc
             [title]="'Persolnal info'"
@@ -6,31 +6,46 @@
         </app-title-and-desc>
 
         <div class="my-form mt-10">
-            <label for="">Name</label>
-            <input type="text" placeholder="e.g. Stephen King">
+            <div class="flex justify-between">
+                <label for="name">Name</label>
+                <span *ngIf="isSubmitClicked && form.get('name')?.hasError('required')" class="text-sm text-red-500 font-bold">Enter your name</span>
+            </div>
+            <input formControlName="name" type="text" id="name" placeholder="e.g. Stephen King"
+            [ngClass]="isSubmitClicked && form.get('name')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
         </div>
 
         <div class="my-form mt-8">
-            <label for="">Email Address</label>
-            <input type="email" placeholder="e.g. stephenking@lorem.com">
+            <div class="flex justify-between">
+                <label for="email">Email Address</label>
+                <span *ngIf="isSubmitClicked && form.get('email')?.hasError('required')" class="text-sm text-red-500 font-bold">Enter valid email</span>
+                <span *ngIf="isSubmitClicked && form.get('email')?.hasError('email')" class="text-sm text-red-500 font-bold">Enter valid email</span>
+
+            </div>
+            <input formControlName="email" type="email" id="email" placeholder="e.g. stephenking@lorem.com"
+            [ngClass]="isSubmitClicked && form.get('email')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
         </div>
 
         <div class="my-form mt-8">
-            <label for="">Phone number</label>
-            <input type="text" placeholder="e.g. +1 234 567 890">
+            <div class="flex justify-between">
+                <label for="phone">Phone number</label>
+                <span *ngIf="isSubmitClicked && form.get('phone')?.hasError('required')" class="text-sm text-red-500 font-bold">Enter phone number</span>
+            </div>
+            <input formControlName="phone" type="text" id="phone" placeholder="e.g. +1 234 567 890"
+            [ngClass]="isSubmitClicked && form.get('phone')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
         </div>
     </div>
 
-    <!-- stepper buttons: -->
+    <!-- !stepper buttons for desktop: -->
     <div class="hidden  lg:flex justify-between">
         <button [disabled]="true" class="opacity-0 text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
-        <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
+        <button type="submit" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
     </div>
-</div>
+
+    <!-- !stepper for mobile view: -->
+    <div class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
+        <button [disabled]="true" class="opacity-0 text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
+        <button type="submit" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
+    </div>
+</form>
 
 
-<!-- !stepper for mobile view: -->
-<div class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
-    <button [disabled]="true" class="opacity-0 text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
-    <button (click)="next()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
-</div>

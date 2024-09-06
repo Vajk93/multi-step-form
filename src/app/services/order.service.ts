@@ -33,6 +33,7 @@ export class OrderService {
 		this.order.email = email;
 		this.order.phone = phone;
 		this.orderSubject.next(this.order);
+		console.log(this.order);
 	}
 
 	public updatePlan(plan:string, isMonthly:boolean, planPrice:number){
@@ -57,6 +58,10 @@ export class OrderService {
 		this.order.price_largerStorage = largerStoragePrice;
 		this.order.price_customizableProfile = customProfilePrice;
 		this.orderSubject.next(this.order);
+	}
+
+	public getOrder(): IOrder {
+		return this.orderSubject.getValue();
 	}
 
 }

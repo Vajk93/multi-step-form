@@ -14,7 +14,7 @@ body {
 }
 
 .my-form input {
-    @apply bg-red-400 rounded-md h-[52px] border-[1px] border-[#D6D9E6]  bg-transparent px-5 text-[22px] font-medium
+    @apply bg-red-400 rounded-md h-[52px] border-[1px]  bg-transparent px-5 text-[22px] font-medium
 }
 
 input:focus {

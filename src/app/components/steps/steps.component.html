@@ -1,1 +1,9 @@
-<p>steps works!</p>
+<div class="px-10 pt-10 lg:pt-14 bg-cover object-fit w-full h-[200px] lg:h-[750px] flex flex-row justify-center lg:flex-col lg:justify-start gap-5 lg:gap-12" 
+    [ngStyle]="{'background-image': 'url(' + bgImage + ')'}">
+
+    <app-step [step]="1" [title]="'your info'" [isActive]="false"></app-step>
+    <app-step [step]="2" [title]="'select plan'" [isActive]="false"></app-step>
+    <app-step [step]="3" [title]="'add-ons'" [isActive]="false"></app-step>
+    <app-step [step]="4" [title]="'summary'" [isActive]="false"></app-step>
+
+</div>

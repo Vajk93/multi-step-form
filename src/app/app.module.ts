@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { StepsComponent } from './components/steps/steps.component';
 import { FormsComponent } from './components/forms/forms.component';
+import { StepComponent } from './components/steps/step/step.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StepsComponent,
-    FormsComponent
+    FormsComponent,
+    StepComponent
   ],
   imports: [
     BrowserModule,

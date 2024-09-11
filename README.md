@@ -1,4 +1,4 @@
-This is a multi step form challenge, from frontendmentor.io - not finished
+This is a multi step form challenge, from frontendmentor.io - not finished yet
 
 # multi-step-form
 

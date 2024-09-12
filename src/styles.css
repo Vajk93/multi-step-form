@@ -10,11 +10,11 @@ body {
 }
 
 .my-form label {
-    @apply text-lg text-my-blue
+    @apply text-sm lg:text-lg text-my-blue
 }
 
 .my-form input {
-    @apply bg-red-400 rounded-md h-[52px] border-[1px]  bg-transparent px-5 text-[22px] font-medium
+    @apply bg-red-400 rounded-md h-10 lg:h-[52px] border-[1px]  bg-transparent px-5 text-[16px] lg:text-[22px] font-medium
 }
 
 input:focus {

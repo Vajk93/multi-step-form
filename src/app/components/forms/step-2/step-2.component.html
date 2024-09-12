@@ -7,12 +7,12 @@
         </app-title-and-desc>
 
         <!-- items container: -->
-        <div class="grid grid-col-1 lg:grid-cols-3 gap-6 mt-12">
+        <div class="grid grid-col-1 lg:grid-cols-3 gap-4 lg:gap-6 mt-12">
             <!-- item top: -->
             <div *ngFor="let item of plans; let i = index" 
                 (click)="selectPlan(i)"
                 [ngClass]="selectedPlanName === item.name ? 'border-my-purple bg-[#EFF5FF]' : 'border-[#D6D9E6] bg-white'"
-                class="p-5 rounded-lg flex flex-row items-center lg:items-start lg:flex-col lg:h-[170px] justify-between border-[1px] cursor-pointer">
+                class="p-3 lg:p-5 rounded-lg flex flex-row items-center lg:items-start lg:flex-col lg:h-[170px] justify-between border-[1px] cursor-pointer">
                 <div>
                     <img src="{{item.icon}}" alt="">
                 </div>

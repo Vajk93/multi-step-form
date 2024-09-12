@@ -14,14 +14,14 @@ export class OrderService {
 		email: '',
 		phone: '',
 		plan: 'Arcade',
-		planPrice: 0,
+		planPrice: 9,
 		isMonthly: true,
 		need_onlineServices: false,
 		need_largerStorage: false,
 		need_customizableProfile: false,
-		price_onlineServices: 0,
-		price_largerStorage: 0,
-		price_customizableProfile: 0,
+		price_onlineServices: 9,
+		price_largerStorage: 12,
+		price_customizableProfile: 15,
 		summaryPrice: 0
 	}
 	
@@ -58,6 +58,21 @@ export class OrderService {
 		this.order.price_largerStorage = largerStoragePrice;
 		this.order.price_customizableProfile = customProfilePrice;
 		this.orderSubject.next(this.order);
+	}
+
+	public updateSummaryPrice():number {
+		let summary:number = 0;
+		summary += this.order.planPrice;
+		this.order.need_onlineServices ? 
+			summary += this.order.price_onlineServices : '';
+
+		this.order.need_largerStorage ? 
+			summary += this.order.price_largerStorage : ''
+
+		this.order.need_customizableProfile ? 
+			summary += this.order.price_customizableProfile : ''
+
+		return summary
 	}
 
 	public getOrder(): IOrder {

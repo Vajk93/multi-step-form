@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IService } from 'src/app/interfaces/globals';
 import { OrderService } from 'src/app/services/order.service';
 import { StepperService } from 'src/app/services/stepper.service';
 
@@ -27,20 +28,18 @@ export class Step3Component implements OnInit {
 		this.initServicesPrices()
 	}
 
-	protected selectService(item:any){
-		console.log(item);
+	protected selectService(item:IService):void {
 		item.selected = !item.selected
 
 		this.updateServices()
 	}
 
-	private initServicesPrices(){
+	private initServicesPrices():void {
 		this.isMonthly = this.orderService.getIsMonthly();
 		if(this.isMonthly){
 			this.onlineServicesPrice = this.datas[0].montlyPrice
 			this.largerStoragePrice = this.datas[1].montlyPrice
 			this.customProfilePrice = this.datas[2].montlyPrice
-
 		} else {
 			this.onlineServicesPrice = this.datas[0].yearlyPrice
 			this.largerStoragePrice = this.datas[1].yearlyPrice
@@ -48,7 +47,7 @@ export class Step3Component implements OnInit {
 		}
 	}
 
-	private initSelectedServices(){
+	private initSelectedServices():void {
 		let _order = this.orderService.getOrder();
 
 		this.datas[0].selected = _order.need_onlineServices
@@ -56,7 +55,7 @@ export class Step3Component implements OnInit {
 		this.datas[2].selected = _order.need_customizableProfile
 	}
 
-	private updateServices(){
+	private updateServices():void {
 		this.orderService.updateServices(
 			this.datas[0].selected,
 			this.datas[1].selected,
@@ -65,16 +64,19 @@ export class Step3Component implements OnInit {
 			this.largerStoragePrice,
 			this.customProfilePrice
 		)
+		let _order = this.orderService.getOrder()
+		console.log(_order);
 	}
-	protected next(){
+	protected next():void {
+		this.updateServices()
 		this.stepperService.nextStep();
 	}
 
-	protected prev(){
+	protected prev():void {
 		this.stepperService.prevStep();
 	}
 
-	protected datas = [
+	protected datas: IService[] = [
 		{
 			name: 'Online service',
 			desc: 'Access to multiplayer games',

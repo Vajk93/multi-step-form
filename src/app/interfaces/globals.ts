@@ -16,3 +16,25 @@ export interface IOrder {
     
     summaryPrice: number
 }
+
+export interface IPlan {
+    icon: string,
+	name: string,
+	montlyPrice: number,
+	yearlyPrice: number,
+	desc: string
+}
+
+export interface IService {
+    name: string,
+	desc: string,
+	montlyPrice: number,
+	yearlyPrice: number,
+	selected: boolean,
+}
+
+export interface IStep {
+    step: 1 | 2 | 3 | 4, 
+    title: string, 
+    isActive:boolean
+}

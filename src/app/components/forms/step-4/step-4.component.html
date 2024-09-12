@@ -9,37 +9,49 @@
         <div class="rounded-lg bg-[#F8F9FF] px-6 py-5 mt-8">
             <div class="flex justify-between items-center">
                 <div>
-                    <h2 class="text-[16px] font-medium">cím</h2>
-                    <p class="text-sm text-[#9699AA]">desc</p>
+                    <h2 class="text-[16px] font-medium">{{selectedPlanName}}</h2>
+                    <p (click)="navigateToPlans()" class="text-sm text-[#9699AA] underline cursor-pointer">Change</p>
                 </div>
                 <div>
-                    <p class="font-bold text-my-blue">9mondt</p>
+                    <p class="font-bold text-my-blue">
+                        +${{selectedPlanPrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                    </p>
                 </div>
             </div>
 
             <!-- line: -->
             <div class="bg-[#979797] w-full h-[1px] my-5 opacity-20"></div>
 
-            <div class="flex justify-between">
+            <div *ngIf="needOnlineServices" class="flex justify-between">
                 <p class="text-sm text-my-grey">Online service</p>
-                <p class="text-sm text-my-blue">+$1/mo</p>
+                <p class="text-sm text-my-blue">
+                    +${{onlineServicesPrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                </p>
             </div>
-            <div class="flex justify-between mt-3">
-                <p class="text-sm text-my-grey">Online service</p>
-                <p class="text-sm text-my-blue">+$1/mo</p>
+            <div *ngIf="needLargerStorage" class="flex justify-between mt-3">
+                <p class="text-sm text-my-grey">Larger Storage</p>
+                <p class="text-sm text-my-blue">
+                    +${{largerStoragePrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                </p>
+            </div>
+            <div *ngIf="needCustomizableProfile" class="flex justify-between mt-3">
+                <p class="text-sm text-my-grey">Customizable profile</p>
+                <p class="text-sm text-my-blue">
+                    +${{customProfilePrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                </p>
             </div>
         </div>
 
         <div class="flex justify-between mt-5 px-6">
-            <p class="text-sm text-my-grey">Total (per month)</p>
-            <p class="text-xl font-bold text-my-purple">+$12/mo</p>
+            <p class="text-sm text-my-grey">Total (per {{isMonthly ? 'month' : 'year'}})</p>
+            <p class="text-xl font-bold text-my-purple">+${{summary}}/{{isMonthly ? 'mo' : 'yr'}}</p>
         </div>
     </div>
 
    <!-- stepper buttons: -->
     <div class="hidden lg:flex justify-between">
         <button (click)="prev()" class="text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
-        <button (click)="submit()" class="text-[16px] h-[48px] w-[124px] bg-my-blue text-white font-medium rounded-[8px]">Next</button>
+        <button (click)="submit()" class="text-[16px] h-[48px] w-[124px] bg-my-purple text-white font-medium rounded-[8px]">Confirm</button>
     </div>
 </div>
 

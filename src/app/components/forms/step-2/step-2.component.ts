@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IPlan } from 'src/app/interfaces/globals';
 import { OrderService } from 'src/app/services/order.service';
 import { StepperService } from 'src/app/services/stepper.service';
 
@@ -14,49 +15,59 @@ export class Step2Component implements OnInit {
 	protected isMonthly:boolean = true;
 	protected selectedPlanPrice:number = 0;
 	protected selectedPlanName:string = 'Arcade';
-	protected selectedPlanIndex:number = 1;
+	protected selectedPlanIndex:number = 0;
 
 	ngOnInit(): void {
 		const _order = this.orderService.getOrder();
 		this.selectedPlanName = _order.plan;
+		this.selectedPlanPrice = _order.planPrice
+		this.initSelectedPlanIndex()		
 		this.isMonthly = _order.isMonthly
-		console.log(this.isMonthly);
 	}
 
-	protected selectPlan(index: number){
+	protected selectPlan(index: number):void {
 		this.selectedPlanIndex = index;
 		this.selectedPlanName = this.plans[index].name;
 		this.isMonthly ?
 			this.selectedPlanPrice = this.plans[index].montlyPrice :
 			this.selectedPlanPrice = this.plans[index].yearlyPrice;
 
-		console.log(this.plans[this.selectedPlanIndex].name, this.selectedPlanPrice, this.isMonthly);
 		this.updatePlan()
 	}
 
-	protected switchPeriod(){
+	protected switchPeriod():void {
 		this.isMonthly = !this.isMonthly
 		this.isMonthly ?
 			this.selectedPlanPrice = this.plans[this.selectedPlanIndex].montlyPrice :
 			this.selectedPlanPrice = this.plans[this.selectedPlanIndex].yearlyPrice;
 		
-		console.log(this.plans[this.selectedPlanIndex].name, this.selectedPlanPrice, this.isMonthly);
 		this.updatePlan()
 	}
 
-	protected next(){
+	protected next():void {
+		this.updatePlan()
 		this.stepperService.nextStep();
 	}
 
-	protected prev(){
+	protected prev():void {
 		this.stepperService.prevStep();
 	}
 
-	private updatePlan(){
+	private initSelectedPlanIndex():void {
+		if(this.orderService.getOrder().plan === 'Arcade'){
+			this.selectedPlanIndex = 0
+		} else if(this.orderService.getOrder().plan === 'Advanced'){
+			this.selectedPlanIndex = 1
+		} else {
+			this.selectedPlanIndex = 2
+		} 
+	}
+
+	private updatePlan():void {
 		this.orderService.updatePlan(this.plans[this.selectedPlanIndex].name, this.selectedPlanPrice, this.isMonthly)
 	}
 
-	protected plans = [
+	protected plans:IPlan[] = [
 		{
 			icon: '/assets/images/icon-arcade.svg',
 			name: 'Arcade',

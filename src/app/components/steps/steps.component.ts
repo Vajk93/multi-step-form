@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
+import { IStep } from 'src/app/interfaces/globals';
 import { StepperService } from 'src/app/services/stepper.service';
 
 @Component({
@@ -33,7 +34,7 @@ export class StepsComponent implements OnInit {
 		}
 	}
 
-	protected steps:any[] = [
+	protected steps:IStep[] = [
 		{step: 1, title: 'YOUR INFO', isActive:false},
 		{step: 2, title: 'SELECT PLAN', isActive:false},
 		{step: 3, title: 'ADD-ONS', isActive:false},

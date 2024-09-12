@@ -57,7 +57,7 @@
 
 
 <!-- !stepper for mobile view: -->
-<div class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
+<div *ngIf="!isOrderComfirmed"  class="fixed bottom-0 left-0 right-0 p-5 bg-white flex lg:hidden justify-between">
     <button (click)="prev()" class="text-my-grey text-[16px] h-[48px] font-medium">Go Back</button>
     <button (click)="submit()" class="text-[16px] h-[48px] w-[124px] bg-my-purple text-white font-medium rounded-[8px]">Confirm</button>
 </div>

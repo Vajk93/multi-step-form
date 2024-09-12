@@ -12,12 +12,14 @@ export class Step1Component implements OnInit {
 
 	protected form: FormGroup;
 	protected isSubmitClicked:boolean = false;
+	protected isMobileOptionsOpen:boolean = false;
+	protected selectedPhoneElohivo:number = 70
 
 	constructor(private stepperService: StepperService, private fb: FormBuilder, private orderService: OrderService){
 		this.form = this.fb.group({
 			name: ['', Validators.required], 
 			email: ['', [Validators.required, Validators.email]], 
-			phone: ['', [Validators.required]], 
+			phone: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(7)]], 
 		});
 	}
 
@@ -28,6 +30,16 @@ export class Step1Component implements OnInit {
 			email: _order.email,
 			phone: _order.phone,
 		});
+	}
+
+	protected selectPhoneElohivo(value:number){
+		this.selectedPhoneElohivo = value;
+		this.isMobileOptionsOpen = false
+	}
+
+	protected validateNumberInput(event: any): void {
+		const _input = event.target as HTMLInputElement;
+		_input.value = _input.value.replace(/[^0-9]/g, '');//only numbers 
 	}
 
 	protected onSubmit():void {

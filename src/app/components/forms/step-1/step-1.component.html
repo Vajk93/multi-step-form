@@ -22,17 +22,33 @@
 
             </div>
             <input formControlName="email" type="email" id="email" placeholder="e.g. stephenking@lorem.com"
-            [ngClass]="isSubmitClicked && form.get('email')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
+                [ngClass]="isSubmitClicked && form.get('email')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
         </div>
 
-        <div class="my-form mt-8">
+        <div class="my-form mt-8 relative">
             <div class="flex justify-between">
                 <label for="phone">Phone number</label>
                 <span *ngIf="isSubmitClicked && form.get('phone')?.hasError('required')" class="text-sm text-red-500 font-bold">Enter phone number</span>
+                <span *ngIf="isSubmitClicked && form.get('phone')?.hasError('minlength')" class="text-sm text-red-500 font-bold">Enter at least 7 digits</span>
+                <span *ngIf="isSubmitClicked && form.get('phone')?.hasError('maxlength')" class="text-sm text-red-500 font-bold">Enter only 7 digits</span>
             </div>
-            <input formControlName="phone" type="text" id="phone" placeholder="e.g. +1 234 567 890"
-            [ngClass]="isSubmitClicked && form.get('phone')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
-        </div>
+            <input formControlName="phone" type="tel" pattern="[0-9]*" id="phone" placeholder="e.g. +1 234 567 890" (input)="validateNumberInput($event)"
+                class="!pl-28 lg:!pl-[120px]"
+                [ngClass]="isSubmitClicked && form.get('phone')?.hasError('required') ? 'border-red-500' : 'border-[#D6D9E6]'">
+            <div class="absolute left-0 bottom-0 h-10 lg:h-[52px] w-10 lg:w-[52px] bg-slate-200 rounded-l-md flex justify-center items-center font-bold select-none">
+                +36
+            </div>
+            <div (click)="isMobileOptionsOpen = !isMobileOptionsOpen" class="absolute left-10 lg:left-[52px] bottom-0 h-10 lg:h-[52px] w-14 lg:w-[60px] bg-slate-200 border-l-[1px] border-slate-300 flex justify-center items-center gap-1 cursor-pointer font-bold">
+                {{selectedPhoneElohivo}}
+                <svg [ngClass]="isMobileOptionsOpen ? 'rotate-[180deg]' : ''" class="size-4 transition-all" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" /></svg>
+            </div>
+            <div *ngIf="isMobileOptionsOpen" 
+                class="absolute top-[60px] left-10 lg:left-[52px] lg:top-[80px] w-14 lg:w-[60px] h-[100px] bg-white shadow rounded-b-md border-[1px] border-slate-300 border-t-0 flex flex-col items-center justify-around cursor-pointer select-none">
+                <p (click)="selectPhoneElohivo(20)" class="lg:hover:bg-slate-200 w-full h-full flex items-center justify-center">20</p>
+                <p (click)="selectPhoneElohivo(30)" class="lg:hover:bg-slate-200 w-full h-full flex items-center justify-center">30</p>
+                <p (click)="selectPhoneElohivo(70)" class="lg:hover:bg-slate-200 w-full h-full flex items-center justify-center">70</p>
+            </div>
+            </div>
     </div>
 
     <!-- !stepper buttons for desktop: -->

@@ -1,4 +1,5 @@
-This is a multi step form challenge, from frontendmentor.io - not finished yet
+This is a multi step form challenge, from frontendmentor.io. The challenge:
+[challenge link](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ)
 
 # multi-step-form
 

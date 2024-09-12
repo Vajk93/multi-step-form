@@ -13,9 +13,9 @@ export class OrderService {
 		name: '',
 		email: '',
 		phone: '',
-		plan: '',
+		plan: 'Arcade',
 		planPrice: 0,
-		isMonthy: true,
+		isMonthly: true,
 		need_onlineServices: false,
 		need_largerStorage: false,
 		need_customizableProfile: false,
@@ -36,12 +36,17 @@ export class OrderService {
 		console.log(this.order);
 	}
 
-	public updatePlan(plan:string, isMonthly:boolean, planPrice:number){
+	public updatePlan(plan:string, planPrice:number, isMonthly:boolean){
 		this.order.plan = plan;
-		this.order.isMonthy = isMonthly;
 		this.order.planPrice = planPrice;
+		this.order.isMonthly = isMonthly
 		this.orderSubject.next(this.order);
 	}
+
+	// public updatePlanPeriod(isMonthly:boolean){
+	// 	this.order.isMonthly = isMonthly;
+	// 	this.orderSubject.next(this.order);
+	// }
 
 	public updateServices(
 		needOnlineServices:boolean,

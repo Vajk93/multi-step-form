@@ -9,15 +9,17 @@
         <!-- items container: -->
         <div class="grid grid-col-1 lg:grid-cols-3 gap-6 mt-12">
             <!-- item top: -->
-            <div *ngFor="let item of datas" 
-                class="p-5 rounded-lg flex flex-row items-center lg:items-start lg:flex-col bg-white lg:h-[170px] justify-between border-[1px] border-[#D6D9E6]">
+            <div *ngFor="let item of plans; let i = index" 
+                (click)="selectPlan(i)"
+                [ngClass]="selectedPlanName === item.name ? 'border-my-purple bg-[#EFF5FF]' : 'border-[#D6D9E6] bg-white'"
+                class="p-5 rounded-lg flex flex-row items-center lg:items-start lg:flex-col lg:h-[170px] justify-between border-[1px] cursor-pointer">
                 <div>
                     <img src="{{item.icon}}" alt="">
                 </div>
                 <div>
                     <p class="text-my-blue text-[16px] font-bold">{{item.name}}</p>
                     <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
-                    <p *ngIf="!isMonthly" class="text-sm font-[300] text-black">{{item.desc}}</p>
+                    <p *ngIf="!isMonthly" class="text-xs font-[300] text-black">{{item.desc}}</p>
                 </div>
             </div>
             <!-- item bottom -->
@@ -27,7 +29,7 @@
         <div class="bg-[#EFF5FF] h-[48px] w-full rounded-lg mt-7 flex justify-center pt-2 gap-7">
             <p [ngClass]="isMonthly ? 'text-my-blue' : 'text-[#9699AA]'" class=" font-medium">Monthly</p>
             <!-- switcher: -->
-            <div (click)="isMonthly = !isMonthly" class="relative h-[20px] w-[38px] rounded-[10px] bg-my-blue mt-1 transition-all cursor-pointer">
+            <div (click)="switchPeriod()" class="relative h-[20px] w-[38px] rounded-[10px] bg-my-blue mt-1 transition-all cursor-pointer">
                 <div [ngClass]="isMonthly ? 'left-[4px]' : 'left-[22px]'" 
                     class="absolute top-1 h-[12px] w-[12px] bg-white rounded-full transition-all">
                 </div>

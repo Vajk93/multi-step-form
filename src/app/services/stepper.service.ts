@@ -20,7 +20,7 @@ export class StepperService {
 		this.stepSubject.next(step)
 	}
 
-	private stepSubject = new BehaviorSubject<number>(3);
+	private stepSubject = new BehaviorSubject<number>(1);
 	public actualStep$ = this.stepSubject.asObservable()
 
 }

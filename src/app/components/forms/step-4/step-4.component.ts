@@ -26,6 +26,8 @@ export class Step4Component implements OnInit {
 	protected needCustomizableProfile:boolean = false;
 	protected summary:number | null = null;
 
+	protected isOrderComfirmed:boolean = false;
+
 	ngOnInit(): void {
 		this.initDatas()
 	}
@@ -56,6 +58,6 @@ export class Step4Component implements OnInit {
 	}
 
 	protected submit(){
-		console.log('submitted');
+		this.isOrderComfirmed = true;
 	}
 }

@@ -81,7 +81,6 @@ export class Step3Component implements OnInit {
 			montlyPrice: 1,
 			yearlyPrice: 10,
 			selected: false,
-			visiblePrice: 0
 		},
 		{
 			name: 'Larger storage',
@@ -89,7 +88,6 @@ export class Step3Component implements OnInit {
 			montlyPrice: 2,
 			yearlyPrice: 20,
 			selected: false,
-			visiblePrice: 0
 		},
 		{
 			name: 'Customizable profile',
@@ -97,7 +95,7 @@ export class Step3Component implements OnInit {
 			montlyPrice: 2,
 			yearlyPrice: 20,
 			selected: false,
-			visiblePrice: 0
 		},
 	]
+
 }

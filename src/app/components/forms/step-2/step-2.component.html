@@ -18,7 +18,9 @@
                 </div>
                 <div>
                     <p class="text-my-blue text-[16px] font-bold">{{item.name}}</p>
-                    <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
+                    <p class="text-sm text-[#9699AA]">
+                        ${{isMonthly ? item.montlyPrice : item.yearlyPrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                    </p>
                     <p *ngIf="!isMonthly" class="text-xs font-[300] text-black">{{item.desc}}</p>
                 </div>
             </div>

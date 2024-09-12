@@ -43,11 +43,6 @@ export class OrderService {
 		this.orderSubject.next(this.order);
 	}
 
-	// public updatePlanPeriod(isMonthly:boolean){
-	// 	this.order.isMonthly = isMonthly;
-	// 	this.orderSubject.next(this.order);
-	// }
-
 	public updateServices(
 		needOnlineServices:boolean,
 		needLargerStorage:boolean,
@@ -67,6 +62,10 @@ export class OrderService {
 
 	public getOrder(): IOrder {
 		return this.orderSubject.getValue();
+	}
+
+	public getIsMonthly(){
+		return this.order.isMonthly
 	}
 
 }

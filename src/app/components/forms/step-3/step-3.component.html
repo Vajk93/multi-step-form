@@ -9,9 +9,9 @@
         <!-- items container: -->
         <div class="flex flex-col gap-5 mt-8">
             <!-- item top: -->
-            <div *ngFor="let item of datas" 
+            <div *ngFor="let item of datas; let i = index" 
                 [ngClass]="item.selected ? 'border-my-purple' : 'border-[#D6D9E6]'"
-                (click)="item.selected = !item.selected"
+                (click)="selectService(item)"
                 class="p-5 rounded-lg flex flex-row items-center bg-white justify-between border-[1px] cursor-pointer">
                 <div class="flex items-center">
                 <div [ngClass]="item.selected ? 'bg-my-purple border-my-purple' : 'bg-white border-[#D6D9E6]'"
@@ -24,7 +24,9 @@
                 </div>
                 </div>
                 <div>
-                    <p class="text-sm text-[#9699AA]">{{isMonthly ? item.montlyPrice : item.yearlyPrice}}</p>
+                    <p class="text-sm text-[#9699AA]">
+                        ${{isMonthly ? item.montlyPrice : item.yearlyPrice}}/{{isMonthly ? 'mo' : 'yr'}}
+                    </p>
                 </div>
             </div>
             <!-- item bottom -->

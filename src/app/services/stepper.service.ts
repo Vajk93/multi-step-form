@@ -17,7 +17,7 @@ export class StepperService {
 		this.stepSubject.next(_step)
 		console.log(_step);
 	}
-	private stepSubject = new BehaviorSubject<number>(1);
+	private stepSubject = new BehaviorSubject<number>(2);
 	public actualStep$ = this.stepSubject.asObservable()
 
 }

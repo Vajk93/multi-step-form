@@ -4,7 +4,7 @@ export interface IOrder {
     phone: string,
     plan: string,
     planPrice: number,
-    isMonthy: boolean,
+    isMonthly: boolean,
 
     need_onlineServices: boolean,
     need_largerStorage: boolean,
